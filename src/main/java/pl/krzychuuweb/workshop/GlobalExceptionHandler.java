@@ -1,11 +1,14 @@
 package pl.krzychuuweb.workshop;
 
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
+import org.springframework.web.context.request.ServletWebRequest;
+import pl.krzychuuweb.workshop.car.exception.CarNotFoundException;
 
 import java.time.LocalDateTime;
 import java.util.HashMap;
@@ -27,12 +30,12 @@ class GlobalExceptionHandler {
         return errors;
     }
 
-//    @ExceptionHandler(CarNotFoundException.class)
-//    ResponseEntity<ExceptionResponseTemplate> carNotFoundException(CarNotFoundException exception, ServletWebRequest request) {
-//        ExceptionResponseTemplate exceptionResponseTemplate = new ExceptionResponseTemplate(HttpStatus.BAD_REQUEST, exception.getLocalizedMessage(), request.getRequest().getRequestURI());
-//
-//        return new ResponseEntity<>(exceptionResponseTemplate, HttpStatus.BAD_REQUEST);
-//    }
+    @ExceptionHandler(CarNotFoundException.class)
+    ResponseEntity<ExceptionResponseTemplate> carNotFoundException(CarNotFoundException exception, ServletWebRequest request) {
+        ExceptionResponseTemplate exceptionResponseTemplate = new ExceptionResponseTemplate(HttpStatus.BAD_REQUEST, exception.getLocalizedMessage(), request.getRequest().getRequestURI());
+
+        return new ResponseEntity<>(exceptionResponseTemplate, HttpStatus.BAD_REQUEST);
+    }
 
     private static class ExceptionResponseTemplate {
         private final LocalDateTime time;
