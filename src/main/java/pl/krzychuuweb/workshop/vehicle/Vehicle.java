@@ -1,10 +1,10 @@
-package pl.krzychuuweb.workshop.car;
+package pl.krzychuuweb.workshop.vehicle;
 
 import javax.persistence.*;
 
 @Entity
-@Table(name = "cars")
-class Car {
+@Table(name = "vehicles")
+class Vehicle {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -12,12 +12,6 @@ class Car {
     private Long id;
     @Column(nullable = false)
     private String registrationNumber;
-    @Column(nullable = false)
-    private int vehicleCategory;
-    @Column(nullable = false)
-    private String mark;
-    @Column(nullable = false)
-    private String model;
     @Column(nullable = false)
     private String color;
     @Column(nullable = false)
@@ -43,30 +37,6 @@ class Car {
 
     void setRegistrationNumber(final String registrationNumber) {
         this.registrationNumber = registrationNumber;
-    }
-
-    public int getVehicleCategory() {
-        return vehicleCategory;
-    }
-
-    void setVehicleCategory(final int vehicleCategory) {
-        this.vehicleCategory = vehicleCategory;
-    }
-
-    public String getMark() {
-        return mark;
-    }
-
-    void setMark(final String mark) {
-        this.mark = mark;
-    }
-
-    public String getModel() {
-        return model;
-    }
-
-    void setModel(final String model) {
-        this.model = model;
     }
 
     public String getColor() {

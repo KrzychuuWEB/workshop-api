@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.context.request.ServletWebRequest;
-import pl.krzychuuweb.workshop.car.exception.CarNotFoundException;
+import pl.krzychuuweb.workshop.vehicle.exception.VehicleNotFoundException;
 
 import java.time.LocalDateTime;
 import java.util.HashMap;
@@ -30,8 +30,8 @@ class GlobalExceptionHandler {
         return errors;
     }
 
-    @ExceptionHandler(CarNotFoundException.class)
-    ResponseEntity<ExceptionResponseTemplate> carNotFoundException(CarNotFoundException exception, ServletWebRequest request) {
+    @ExceptionHandler(VehicleNotFoundException.class)
+    ResponseEntity<ExceptionResponseTemplate> carNotFoundException(VehicleNotFoundException exception, ServletWebRequest request) {
         ExceptionResponseTemplate exceptionResponseTemplate = new ExceptionResponseTemplate(HttpStatus.BAD_REQUEST, exception.getLocalizedMessage(), request.getRequest().getRequestURI());
 
         return new ResponseEntity<>(exceptionResponseTemplate, HttpStatus.BAD_REQUEST);

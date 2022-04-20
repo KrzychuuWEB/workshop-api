@@ -1,4 +1,4 @@
-package pl.krzychuuweb.workshop.car;
+package pl.krzychuuweb.workshop.vehicle;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.Test;
@@ -7,7 +7,7 @@ import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMock
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
-import pl.krzychuuweb.workshop.car.dto.CarDTO;
+import pl.krzychuuweb.workshop.vehicle.dto.VehicleDTO;
 
 import javax.transaction.Transactional;
 
@@ -17,26 +17,26 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @SpringBootTest
 @AutoConfigureMockMvc
-class CarControllerTest {
+class VehicleControllerTest {
 
     @Autowired
     private MockMvc mockMvc;
     @Autowired
     private ObjectMapper objectMapper;
     @Autowired
-    private CarRepository carRepository;
+    private VehicleRepository vehicleRepository;
 
     @Test
     @Transactional
-    void should_get_car_by_registration_number() throws Exception {
-        Car car = carRepository.save(CarObjectMotherTest.newCar().build());
+    void should_get_vehicle_by_registration_number() throws Exception {
+        Vehicle vehicle = vehicleRepository.save(VehicleObjectMotherTest.newCar().build());
 
-        MvcResult mvcResult = mockMvc.perform(get("/cars/" + car.getRegistrationNumber()))
+        MvcResult mvcResult = mockMvc.perform(get("/vehicles/" + vehicle.getRegistrationNumber()))
                 .andExpect(status().is(200))
                 .andReturn();
 
-        CarDTO response = objectMapper.readValue(mvcResult.getResponse().getContentAsString(), CarDTO.class);
+        VehicleDTO response = objectMapper.readValue(mvcResult.getResponse().getContentAsString(), VehicleDTO.class);
 
-        assertThat(response.registrationNumber()).isEqualTo(car.getRegistrationNumber());
+        assertThat(response.registrationNumber()).isEqualTo(vehicle.getRegistrationNumber());
     }
 }
