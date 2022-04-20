@@ -31,7 +31,7 @@ class GlobalExceptionHandler {
     }
 
     @ExceptionHandler(VehicleNotFoundException.class)
-    ResponseEntity<ExceptionResponseTemplate> carNotFoundException(VehicleNotFoundException exception, ServletWebRequest request) {
+    ResponseEntity<ExceptionResponseTemplate> vehicleNotFoundException(VehicleNotFoundException exception, ServletWebRequest request) {
         ExceptionResponseTemplate exceptionResponseTemplate = new ExceptionResponseTemplate(HttpStatus.BAD_REQUEST, exception.getLocalizedMessage(), request.getRequest().getRequestURI());
 
         return new ResponseEntity<>(exceptionResponseTemplate, HttpStatus.BAD_REQUEST);
