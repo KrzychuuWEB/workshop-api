@@ -10,7 +10,7 @@ public class VehicleFacade {
 
     private final VehicleRepository vehicleRepository;
 
-    public VehicleFacade(final VehicleRepository vehicleRepository) {
+    VehicleFacade(final VehicleRepository vehicleRepository) {
         this.vehicleRepository = vehicleRepository;
     }
 

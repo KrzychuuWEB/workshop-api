@@ -12,6 +12,15 @@ class Vehicle {
     private Long id;
     @Column(nullable = false)
     private String registrationNumber;
+    @ManyToOne
+    @JoinColumn(name = "mark_id")
+    private Mark mark;
+    @ManyToOne
+    @JoinColumn(name = "model_id")
+    private Model model;
+    @ManyToOne
+    @JoinColumn(name = "generation_id")
+    private Generation generation;
     @Column(nullable = false)
     private String color;
     @Column(nullable = false)
@@ -37,6 +46,30 @@ class Vehicle {
 
     void setRegistrationNumber(final String registrationNumber) {
         this.registrationNumber = registrationNumber;
+    }
+
+    public Mark getMark() {
+        return mark;
+    }
+
+    void setMark(final Mark mark) {
+        this.mark = mark;
+    }
+
+    public Model getModel() {
+        return model;
+    }
+
+    void setModel(final Model model) {
+        this.model = model;
+    }
+
+    public Generation getGeneration() {
+        return generation;
+    }
+
+    void setGeneration(final Generation generation) {
+        this.generation = generation;
     }
 
     public String getColor() {
