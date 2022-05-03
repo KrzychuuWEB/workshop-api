@@ -10,7 +10,7 @@ class Mark {
     @Column(name = "id", nullable = false)
     private Long id;
     @Column(nullable = false)
-    private String mark;
+    private String name;
 
     public Long getId() {
         return id;
@@ -20,11 +20,11 @@ class Mark {
         this.id = id;
     }
 
-    public String getMark() {
-        return mark;
+    public String getName() {
+        return name;
     }
 
-    void setMark(final String mark) {
-        this.mark = mark;
+    void setName(final String mark) {
+        this.name = mark;
     }
 }

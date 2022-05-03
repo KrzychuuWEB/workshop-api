@@ -12,7 +12,7 @@ class Generation {
     @JoinColumn(name = "model_id")
     private Model model;
     @Column(nullable = false)
-    private String generation;
+    private String name;
 
     public Long getId() {
         return id;
@@ -30,11 +30,11 @@ class Generation {
         this.model = model;
     }
 
-    public String getGeneration() {
-        return generation;
+    public String getName() {
+        return name;
     }
 
-    void setGeneration(final String generation) {
-        this.generation = generation;
+    void setName(final String name) {
+        this.name = name;
     }
 }

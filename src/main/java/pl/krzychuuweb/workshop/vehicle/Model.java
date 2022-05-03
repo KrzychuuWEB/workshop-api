@@ -12,7 +12,7 @@ class Model {
     @JoinColumn(name = "mark_id")
     private Mark mark;
     @Column(nullable = false)
-    private String model;
+    private String name;
 
     public Long getId() {
         return id;
@@ -30,11 +30,11 @@ class Model {
         this.mark = mark;
     }
 
-    public String getModel() {
-        return model;
+    public String getName() {
+        return name;
     }
 
-    void setModel(final String model) {
-        this.model = model;
+    void setName(final String name) {
+        this.name = name;
     }
 }
