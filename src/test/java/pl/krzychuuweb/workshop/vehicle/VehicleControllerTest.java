@@ -28,10 +28,10 @@ class VehicleControllerTest {
 
     @Test
     @Transactional
-    void should_get_vehicle_by_registration_number() throws Exception {
+    void should_get_vehicle_by_vin_number() throws Exception {
         Vehicle vehicle = vehicleRepository.save(VehicleObjectMotherTest.newCar().build());
 
-        MvcResult mvcResult = mockMvc.perform(get("/vehicles/" + vehicle.getRegistrationNumber()))
+        MvcResult mvcResult = mockMvc.perform(get("/vehicles/" + vehicle.getVinNumber()))
                 .andExpect(status().is(200))
                 .andReturn();
 

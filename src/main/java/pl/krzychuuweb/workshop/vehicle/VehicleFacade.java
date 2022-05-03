@@ -14,9 +14,9 @@ public class VehicleFacade {
         this.vehicleRepository = vehicleRepository;
     }
 
-    public Vehicle getVehicleByRegistrationNumber(String registrationNumber) {
-        return Optional.ofNullable(vehicleRepository.getByRegistrationNumber(registrationNumber)).orElseThrow(
-                () -> new VehicleNotFoundException("Vehicle with this registration number (" + registrationNumber + ") not found!")
+    public Vehicle getVehicleByVinNumber(String vinNumber) {
+        return Optional.ofNullable(vehicleRepository.getByVinNumber(vinNumber)).orElseThrow(
+                () -> new VehicleNotFoundException("Vehicle with this vin number (" + vinNumber + ") not found!")
         );
     }
 }

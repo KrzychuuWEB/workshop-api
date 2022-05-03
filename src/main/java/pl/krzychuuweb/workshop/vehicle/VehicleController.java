@@ -18,8 +18,8 @@ class VehicleController {
         this.vehicleFacade = vehicleFacade;
     }
 
-    @GetMapping("/{registrationNumber}")
-    VehicleDTO getByRegistrationNumber(@PathVariable String registrationNumber) {
-        return mapVehicleToVehicleDTO(vehicleFacade.getVehicleByRegistrationNumber(registrationNumber));
+    @GetMapping("/{vinNumber}")
+    VehicleDTO getByVinNumber(@PathVariable String vinNumber) {
+        return mapVehicleToVehicleDTO(vehicleFacade.getVehicleByVinNumber(vinNumber));
     }
 }

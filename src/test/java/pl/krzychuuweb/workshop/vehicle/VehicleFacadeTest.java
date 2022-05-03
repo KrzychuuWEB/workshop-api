@@ -24,21 +24,21 @@ class VehicleFacadeTest {
     }
 
     @Test
-    void should_get_vehicle_by_registration_number() {
+    void should_get_vehicle_by_vin_number() {
         Vehicle vehicle = VehicleObjectMotherTest.newCar().build();
 
-        when(vehicleRepository.getByRegistrationNumber(vehicle.getRegistrationNumber())).thenReturn(vehicle);
+        when(vehicleRepository.getByVinNumber(vehicle.getVinNumber())).thenReturn(vehicle);
 
-        Vehicle result = vehicleFacade.getVehicleByRegistrationNumber(vehicle.getRegistrationNumber());
+        Vehicle result = vehicleFacade.getVehicleByVinNumber(vehicle.getVinNumber());
 
         assertThat(result.getId()).isEqualTo(vehicle.getId());
         assertThat(result).isInstanceOf(Vehicle.class);
     }
 
     @Test
-    void should_get_vehicle_by_registration_number_return_exception() {
-        when(vehicleRepository.getByRegistrationNumber(anyString())).thenReturn(null);
+    void should_get_vehicle_by_vin_number_return_exception() {
+        when(vehicleRepository.getByVinNumber(anyString())).thenReturn(null);
 
-        assertThrows(VehicleNotFoundException.class, () -> vehicleFacade.getVehicleByRegistrationNumber(anyString()));
+        assertThrows(VehicleNotFoundException.class, () -> vehicleFacade.getVehicleByVinNumber(anyString()));
     }
 }
